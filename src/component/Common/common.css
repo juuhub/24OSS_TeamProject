@@ -23,3 +23,49 @@
   vertical-align: middle;
 }
 
+/* 전체 컨테이너 */
+.container {
+  margin: 20px;
+}
+
+/* 검색창과 페이지 이동 버튼을 한 줄에 배치 */
+.search-and-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* 리스트 항목의 이미지와 텍스트 */
+.list-item-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.item-avatar {
+  margin-right: 16px;
+}
+
+.item-details {
+  flex-grow: 1;
+}
+
+/* 곡의 길이 출력 */
+.item-duration {
+  text-align: right;
+}
+
+/* Pagination을 가운데 정렬 */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* 오른쪽 하단 추가 아이콘 */
+.add-icon {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
