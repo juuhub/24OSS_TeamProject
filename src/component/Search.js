@@ -1,7 +1,9 @@
 import React from "react";
 
 function Search () {
-    <h1>h1</h1>
+    return (
+        <input type="text"></input>
+    )
 }
 
 export default Search;
