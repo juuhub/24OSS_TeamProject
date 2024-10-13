@@ -35,7 +35,8 @@ function Search() {
         */
 
         console.log("search option: " + searchOption);
-        if (searchOption == "album") { // 제목으로 검색
+        
+        if (searchOption === "album") { // 제목으로 검색
             // API 호출부분
             // 원래는 album이랑 artist선택한거에 따라서 동적으로 하려고 했는데 JSON 데이터가 좀 많이 달라서 if문으로 따로 구분
             // 원래 주소도 searchOption 안 넣고 정적으로 해도 되는데 아까워서 그냥 넣어둠
@@ -84,7 +85,7 @@ function Search() {
             setCount(result);
             setLoading(false);
 
-        } else if (searchOption == "artist") { // 가수로 검색
+        } else if (searchOption === "artist") { // 가수로 검색
             // API 호출부분
             // page값에 apiPage값을 넣어줌
             const response = await fetch(
