@@ -18,7 +18,7 @@ function Header() {
         <Container className="d-flex justify-content-start align-items-center h-100">
           <div className="brand-container" onClick={handleClick}>
             <span className="brand-text">Myshared</span>
-            <Navbar.Brand href="./Main">
+            <Navbar.Brand href="./">
               <img
                 alt=""
                 src="//music.youtube.com/img/on_platform_logo_dark.svg"
