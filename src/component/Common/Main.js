@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Avatar, Button, List, Skeleton, Pagination, Input, Typography } from 'antd';
 import { EditOutlined, DeleteOutlined, PlusCircleOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 import './common.css';
 
 const { Text } = Typography;
@@ -13,6 +14,8 @@ const Main = () => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchText, setSearchText] = useState('');
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(fakeDataUrl)
@@ -53,7 +56,7 @@ const Main = () => {
           onSearch={handleSearch}
           style={{ width: 300 }}
         />
-        <Button type="primary" onClick={() => window.location.href = '/another-page'}>
+        <Button type="primary" onClick={() => navigate('/search')}>
           API Page
         </Button>
       </div>
