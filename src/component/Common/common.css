@@ -1,9 +1,11 @@
+/* Header */
 .bg-body-tertiary {
   background-color: black;
   color: white;
   height: 5rem;
   display: flex;
   align-items: center; /* Navbar 내부 요소 수직 중앙 정렬 */
+  margin-bottom: 0;
 }
 
 .brand-container {
@@ -23,9 +25,12 @@
   vertical-align: middle;
 }
 
-/* 전체 컨테이너 */
+/* Main */
 .container {
   margin: 20px;
+  background-color: black;
+  padding: 20px;
+  border-radius: 8px;
 }
 
 /* 검색창과 페이지 이동 버튼을 한 줄에 배치 */
@@ -51,21 +56,118 @@
   flex-grow: 1;
 }
 
+.item-name {
+  color: white; /* 이름 색상*/
+}
+
+.item-secondary {
+  color: gray; /* artist, genre 색상*/
+}
+
 /* 곡의 길이 출력 */
 .item-duration {
   text-align: right;
+  color: gray; /* 곡의 길이 색상*/
 }
 
-/* Pagination을 가운데 정렬 */
 .pagination-container {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  background-color: black; /* Pagination 배경*/
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.pagination-container .ant-pagination-item,
+.pagination-container .ant-pagination-prev,
+.pagination-container .ant-pagination-next {
+  background-color: #333; /* Pagination 버튼 배경색*/
+  color: white; /* Pagination 텍스트*/
+  border: none;
+}
+
+.pagination-container .ant-pagination-item:hover,
+.pagination-container .ant-pagination-prev:hover,
+.pagination-container .ant-pagination-next:hover {
+  background-color: #555; /* 버튼에 마우스 올리면 더 밝은 회색*/
+}
+
+.pagination-container .ant-pagination-item-active {
+  background-color: #555 !important; /* 선택된 페이지의 배경색 */
+  color: white !important; /* 선택된 페이지의 텍스트 색상*/
 }
 
 /* 오른쪽 하단 추가 아이콘 */
 .add-icon {
-  position: fixed;
-  bottom: 30px;
+  position: absolute;
+  bottom: 60px;
   right: 30px;
+}
+
+/* 수정 및 삭제 버튼 간격 줄이기 */
+.action-button {
+  margin-left: 5px;
+}
+
+body, html {
+  margin: 0;
+  background-color: black;
+}
+
+/* Footer */
+.footer {
+  background-color: #000;  /* 배경색 */
+  padding: 0;
+  position: relative;
+  color: white;
+  text-align: center;
+}
+
+/* 회색 선*/
+.footer-line {
+  width: 100%;
+  height: 1px;
+  background-color: #444;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* Footer 내용물 정렬 */
+.footer-content {
+  display: flex;
+  justify-content: space-between;  /* 좌우로 아이콘 배치 */
+  align-items: center;
+  padding: 10px 20px;
+}
+
+/* 왼쪽 Home 아이콘 */
+.footer-left {
+  flex: 1;
+  text-align: left;
+}
+
+/* 가운데 텍스트 */
+.footer-center {
+  flex: 2;
+  text-align: center;
+}
+
+/* 오른쪽 사용자 아이콘 */
+.footer-right {
+  flex: 1;
+  text-align: right;
+}
+
+/* 아이콘 스타일 */
+.footer-icon {
+  font-size: 24px;
+  color: #fff;
+}
+
+/* 텍스트 스타일 */
+.footer span {
+  color: #ccc; /* 회색 텍스트 */
+  font-size: 14px;
 }

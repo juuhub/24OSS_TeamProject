@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Avatar, Button, List, Skeleton, Pagination, Space, Typography, Input } from 'antd';
+import { Avatar, Button, List, Skeleton, Pagination, Input, Typography } from 'antd';
 import { EditOutlined, DeleteOutlined, PlusCircleOutlined } from '@ant-design/icons';
-import './common.css';  // CSS 파일 추가
+import './common.css';
 
 const { Text } = Typography;
 const { Search } = Input;
 const pageSize = 5;
 const fakeDataUrl = `https://66ff48002b9aac9c997ec8d3.mockapi.io/api/music`;
 
-const App = () => {
+const Main = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -50,12 +50,11 @@ const App = () => {
       <div className="search-and-button">
         <Search
           placeholder="Search by name, artist, or genre"
-          enterButton="Search"
           onSearch={handleSearch}
           style={{ width: 300 }}
         />
         <Button type="primary" onClick={() => window.location.href = '/another-page'}>
-          Go to Another Page
+          API Page
         </Button>
       </div>
 
@@ -78,6 +77,7 @@ const App = () => {
                 type="link" 
                 icon={<DeleteOutlined />} 
                 className="action-button"
+                style={{ marginLeft: '5px' }}
               />,
             ]}
           >
@@ -85,12 +85,12 @@ const App = () => {
               <div className="list-item-content">
                 <Avatar src={item.image} size={64} className="item-avatar" />
                 <div className="item-details">
-                  <Text strong>{item.name}</Text>
+                  <Text strong className="item-name">{item.name}</Text>
                   <br />
-                  <Text type="secondary">{item.artist} / {item.genre}</Text>
+                  <Text className="item-secondary">{item.artist} / {item.genre}</Text>
                 </div>
                 <div className="item-duration">
-                  {Math.floor(item.duration / 60)}분 {item.duration % 60}초
+                  {Math.floor(item.duration / 60)} : {item.duration % 60}
                 </div>
               </div>
             </Skeleton>
@@ -98,7 +98,6 @@ const App = () => {
         )}
       />
 
-      {/* Pagination을 가운데 정렬 */}
       <div className="pagination-container">
         <Pagination
           current={currentPage}
@@ -123,4 +122,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Main;
