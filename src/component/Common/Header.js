@@ -1,11 +1,15 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
+import { useNavigate } from 'react-router-dom';
 import './common.css';
 
 function Header() {
+
+  const navigate = useNavigate();
+
   const handleClick = () => {
-    window.location.href = "./Main"; // home 화면으로 이동
+    navigate('/')
   };
 
   return (

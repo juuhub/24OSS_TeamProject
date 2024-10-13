@@ -7,11 +7,17 @@ import Search from './component/Search';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Main />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path='/' element={<Main />} />
+          <Route path='/search' element={<Search />} />
+        </Routes>
+        <Footer />
+      </div>
+
+    </Router>
   );
 }
 
