@@ -1,0 +1,66 @@
+{
+  "track": {
+    "name": "Je t'aime",
+    "url": "https://www.last.fm/music/Joy/_/Je+t%27aime",
+    "duration": "261000",
+    "streamable": {
+      "#text": "0",
+      "fulltrack": "0"
+    },
+    "listeners": "69518",
+    "playcount": "642188",
+    "artist": {
+      "name": "Joy",
+      "mbid": "ea6a260d-3fca-4a4d-9608-125fc4f03b81",
+      "url": "https://www.last.fm/music/Joy"
+    },
+    "album": {
+      "artist": "Joy",
+      "title": "Je T'aime - Single",
+      "url": "https://www.last.fm/music/Joy/Je+T%27aime+-+Single",
+      "image": [
+        {
+          "#text": "https://lastfm.freetls.fastly.net/i/u/34s/f05ee5ad05da360dc8159bfafabd1d2f.png",
+          "size": "small"
+        },
+        {
+          "#text": "https://lastfm.freetls.fastly.net/i/u/64s/f05ee5ad05da360dc8159bfafabd1d2f.png",
+          "size": "medium"
+        },
+        {
+          "#text": "https://lastfm.freetls.fastly.net/i/u/174s/f05ee5ad05da360dc8159bfafabd1d2f.png",
+          "size": "large"
+        },
+        {
+          "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/f05ee5ad05da360dc8159bfafabd1d2f.png",
+          "size": "extralarge"
+        }
+      ]
+    },
+    "toptags": {
+      "tag": [
+        {
+          "name": "jazz",
+          "url": "https://www.last.fm/tag/jazz"
+        },
+        {
+          "name": "swing",
+          "url": "https://www.last.fm/tag/swing"
+        },
+        {
+          "name": "rnb",
+          "url": "https://www.last.fm/tag/rnb"
+        },
+        {
+          "name": "orchestral pop",
+          "url": "https://www.last.fm/tag/orchestral+pop"
+        }
+      ]
+    },
+    "wiki": {
+      "published": "26 May 2021, 09:20",
+      "summary": "The pre-release track 'Je T'Aime' is a part of JOY's first solo album \u003C안녕 (Hello)\u003E containing a total of 6 tracks to be released on May 31st, 2021. \u003Ca href=\"http://www.last.fm/music/Joy/_/Je+t%27aime\"\u003ERead more on Last.fm\u003C/a\u003E.",
+      "content": "The pre-release track 'Je T'Aime' is a part of JOY's first solo album \u003C안녕 (Hello)\u003E containing a total of 6 tracks to be released on May 31st, 2021. \u003Ca href=\"http://www.last.fm/music/Joy/_/Je+t%27aime\"\u003ERead more on Last.fm\u003C/a\u003E. User-contributed text is available under the Creative Commons By-SA License; additional terms may apply."
+    }
+  }
+}
