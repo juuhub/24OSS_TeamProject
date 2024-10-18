@@ -1,0 +1,29 @@
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #333;
+  border-radius: 8px;
+  color: white;
+}
+
+.form-title {
+  color: white;
+  text-align: center;
+}
+
+.ant-form-item-label > label {
+  color: white;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.button-container {
+  margin-top: 40px;
+}
+
+.submit-button {
+  width: 100%;
+}
