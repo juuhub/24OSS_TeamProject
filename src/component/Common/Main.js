@@ -118,7 +118,7 @@ const Main = () => {
           icon={<PlusCircleOutlined />} 
           size="large" 
           className="add-button"
-          onClick={() => alert('Add new item')}
+          onClick={() => navigate('Music/AddMusic')}
         />
       </div>
     </div>
