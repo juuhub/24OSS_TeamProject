@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { List, Button, Skeleton, Avatar, Typography, Pagination, Input, Select } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
+import { Modal } from "antd"; // 모달 컴포넌트 추가
+import AlbumDetails from "./showDetails";
 import './Common/common.css'
 import './Search.css'
 
@@ -14,9 +16,12 @@ function Search() {
     const [albumsCount, setCount] = useState();
     const [apiItemsPerPage, setItemsPerPage] = useState(10); // 값을 알 수 없으니 itemsPerPage랑 같은 값 넣어줌
     const [searchOption, setSearchOption] = useState("album"); // 기본값은 제목으로 검색
-    
+
+    const [selectedAlbum, setSelectedAlbum] = useState(null); // 선택한 앨범 정보를 저장
+    const [isModalVisible, setIsModalVisible] = useState(false); // 모달 표시 여부
+
     const itemsPerPage = 10;
-    
+
     const searchOptions = [ // 이건 검색 옵션
         { label: "노래 제목", value: "album" },
         { label: "가수 이름", value: "artist" }
@@ -35,7 +40,7 @@ function Search() {
         */
 
         console.log("search option: " + searchOption);
-        
+
         if (searchOption === "album") { // 제목으로 검색
             // API 호출부분
             // 원래는 album이랑 artist선택한거에 따라서 동적으로 하려고 했는데 JSON 데이터가 좀 많이 달라서 if문으로 따로 구분
@@ -139,6 +144,67 @@ function Search() {
         fetchAlbums(page);
     };
 
+    const addMusicToDB = async (album) => {
+        console.log("추가하려는 곡 제목 : " + album.name);
+        console.log("추가하려는 가수 이름 : " + album.artist);
+        const api_key = "873cf422b0fab3416eb51f4c0f99e24b";
+        const getdata = await fetch(
+            `https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${api_key}&artist=${album.artist}&track=${album.name}&format=json`
+        );
+
+        const data = await getdata.json();
+
+        if (!data || !data.track) {
+            console.error('Invalid data structure:', data);
+            return 'Invalid data structure'; // 유효하지 않은 데이터 구조일 때 에러 메시지
+        }
+
+        const getValue = (data, path, defaultValue = "") => {
+            const keys = path.split("."); // path를 점(.)으로 나누어 각 키를 배열로
+            let value = data;
+
+            for (let key of keys) {
+                if (value && value[key] !== undefined) {
+                    value = value[key]; // Json 데이터에 이게 있으면 계속
+                } else {
+                    if (keys.includes("image")) {
+                        console.log("No image data!!");
+                        return "../img/noImg.png";
+                    }
+                    console.log(`No ${key} data`);
+                    return defaultValue; // 없으면 "" 반환시킴
+                }
+            }
+
+            return value || defaultValue; // 최종 값이 falsy일 경우 기본값 반환
+        };
+
+        const userAlbumData = {
+            name: getValue(data, "track.name"),
+            artist: getValue(data, "track.artist.name"),
+            image: getValue(data, "track.album.image.2.#text"),
+            published: getValue(data, "track.wiki.published"), // 별도로 처리하는 함수는 그대로 사용
+            duration: getValue(data, "track.duration") / 1000 || "", // 여기서도 / 1000 적용
+            memo: "", // 사용자가 추후 입력하는 메모
+            genre: getValue(data, "track.toptags.tag.0.name"),
+            id: getValue(data, "mbid")
+        };
+
+        const response = await fetch('https://66ff48002b9aac9c997ec8d3.mockapi.io/api/music', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userAlbumData)
+        });
+        if (response.ok) {
+            console.log("Album saved successfully!");
+        } else {
+            console.error("Failed to save album.");
+        }
+    };
+
+
     return (
         <div className="container">
             <div className="search-button-style">
@@ -177,8 +243,13 @@ function Search() {
                                 type="primary"
                                 icon={<PlusCircleOutlined />}
                                 className="add-button"
+                                onClick={() => addMusicToDB(item)}
                             />,
                         ]}
+                        onClick={() => {
+                            setSelectedAlbum(item); // 선택한 앨범 저장
+                            setIsModalVisible(true); // 모달 표시
+                        }}
                     >
                         <Skeleton avatar title={false} loading={loading} active>
                             <div className="list-item-content">
@@ -203,6 +274,15 @@ function Search() {
                     onChange={handlePageChange}
                 />
             </div>
+
+            <Modal
+                title="Album Details"
+                visible={isModalVisible}
+                onCancel={() => setIsModalVisible(false)} // 취소하면 모달 닫기
+                footer={null} // 하단 버튼 숨기기
+            >
+                <AlbumDetails album={selectedAlbum} />
+            </Modal>
         </div>
     );
 }
