@@ -101,7 +101,7 @@ const Main = () => {
                 type="link" 
                 icon={<EditOutlined />} 
                 className="action-button"
-                onClick={() => navigate('Music/EditMusic/' + item.id)} // 각 아이템의 ID에 맞게 경로 설정
+                onClick={() => navigate(`Music/EditMusic/${item.id}`)} // 각 아이템의 ID에 맞게 경로 설정
               />,
               <Button 
                 key="delete" 

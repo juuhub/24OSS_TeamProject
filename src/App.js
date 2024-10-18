@@ -15,12 +15,11 @@ function App() {
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/search' element={<Search />} />
-          <Route path='Music/AddMusic' element={<Add />} />
-          <Route path='Music/EditMusic' element={<Edit />} />
+          <Route path='/Music/AddMusic' element={<Add />} /> {/* 경로 수정 */}
+          <Route path='/Music/EditMusic/:id' element={<Edit />} /> {/* ID 파라미터 추가 */}
         </Routes>
         <Footer />
       </div>
-
     </Router>
   );
 }

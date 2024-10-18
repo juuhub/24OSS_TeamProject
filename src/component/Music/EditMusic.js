@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Button, DatePicker, InputNumber, message } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
+import moment from 'moment'; // moment 라이브러리 import
 import './music.css';
 
 const { TextArea } = Input;
@@ -17,6 +18,11 @@ const EditMusic = () => {
       try {
         const response = await fetch(`https://66ff48002b9aac9c997ec8d3.mockapi.io/api/music/${id}`);
         const data = await response.json();
+        
+        // 날짜를 moment 객체로 변환
+        if (data.published) {
+          data.published = moment(data.published); // moment로 변환
+        }
         setInitialData(data);
       } catch (error) {
         message.error('Failed to fetch music details.');
@@ -82,7 +88,7 @@ const EditMusic = () => {
           artist: initialData.artist,
           genre: initialData.genre,
           duration: initialData.duration,
-          releaseDate: initialData.published ? new Date(initialData.published) : null, // Date 객체로 변환
+          releaseDate: initialData.published ? moment(initialData.published) : null, // moment로 변환
           details: initialData.memo, // memo 필드로 수정
           imageUrl: initialData.image, // image 필드로 수정
         }}
