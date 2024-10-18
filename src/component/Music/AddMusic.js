@@ -19,9 +19,9 @@ const AddMusic = () => {
       artist: values.artist,
       genre: values.genre,
       duration: values.duration,
-      releaseDate: values.releaseDate.format('YYYY-MM-DD'), // 날짜 형식 변환
-      details: values.details,
-      imageUrl: values.imageUrl, // 이미지 URL 추가
+      published: values.releaseDate.toISOString(), // 날짜 형식 변환
+      memo: values.details, // memo 필드로 변경
+      image: values.imageUrl, // image 필드로 변경
     };
 
     try {
