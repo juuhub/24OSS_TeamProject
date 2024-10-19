@@ -60,7 +60,7 @@
 }
 
 .list-item:hover {
-  transform: scale(1.05); /* 마우스 오버 시 약간 확대 */
+  transform: scale(1.015); /* 마우스 오버 시 약간 확대 */
   background-color: rgba(230, 230, 230, 0.15); /* 연한 회색 배경색 */
   border: 2px solid transparent; /* 테두리는 숨김 */
 }
