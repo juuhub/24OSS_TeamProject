@@ -3,3 +3,5 @@
 22100183 김주한, 22100304 박준현
 
 Netlify : https://oss-teamproject.netlify.app/
+
+개인 Repo : https://github.com/juuhub/24OSS_TeamProject.git
