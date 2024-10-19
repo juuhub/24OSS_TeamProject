@@ -60,8 +60,8 @@ const addMusicToDB = async (album, api_key, noImg) => {
     });
 
     // 저장 결과 확인
-    if (response.ok) message.success("음악 저장이 완료되었습니다."); // 성공 알림
-    else message.error("음악 저장에 실패하였습니다."); // 실패 알림
+    if (response.ok) message.success("Music save success"); // 성공 알림
+    else message.error("Music save fail"); // 실패 알림
 };
 
 export default addMusicToDB;
