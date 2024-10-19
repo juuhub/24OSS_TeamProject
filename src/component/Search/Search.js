@@ -7,6 +7,7 @@ import addMusicToDB from './AddMusicToDB'; // 사용자 db에 저장하는 역�
 import getImageUrl from './GetImg'; // 이미지 받아오는 역할
 import '../Common/common.css'
 import './Search.css'
+import '../Detail/Modal.css'
 import noImg from "../../img/noImg.png";
 
 const { Text } = Typography;
@@ -239,6 +240,7 @@ function Search() {
             </div>
 
             <Modal
+                className="custom-modal"
                 title="Album Details"
                 visible={isModalVisible}
                 onCancel={() => setIsModalVisible(false)} // 취소하면 모달 닫기

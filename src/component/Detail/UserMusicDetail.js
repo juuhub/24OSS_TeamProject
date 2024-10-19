@@ -9,7 +9,7 @@ const AlbumDetails = ({ album }) => {
     const durationInSeconds = Math.floor((album.duration % 60));
     const formattedDuration = `${durationInMinutes}:${durationInSeconds < 10 ? '0' : ''}${durationInSeconds}`;
 
-    const releaseDate = album.duration || 'No release date available.';
+    const releaseDate = album.published || 'No release date available.';
     const details = album.memo || 'No memo';
 
     return (
@@ -19,7 +19,7 @@ const AlbumDetails = ({ album }) => {
             <p><strong>Artist:</strong> {album.artist}</p>
             <p><strong>Release Date:</strong> {releaseDate}</p> {/* 발매일 정보임 */}
             <p><strong>Duration:</strong> {formattedDuration}</p> {/* 노래 재생 시간 */}
-            <p><strong>Album Details:</strong> {details}</p> {/* 세부정보인데 <a>이거 빼고 */}
+            <p><strong>Album Details:</strong> {details}</p>
         </div>
     );
 };
