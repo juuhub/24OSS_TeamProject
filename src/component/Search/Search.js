@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { List, Button, Skeleton, Avatar, Typography, Pagination, Input, Select } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import { Modal } from "antd"; // 모달 컴포넌트 추가
-import AlbumDetails from "../Detail/showDetails"; // 세부정보 보여주는 모달
+import AlbumDetails from "../Detail/APIMusicDetail"; // 세부정보 보여주는 모달
 import addMusicToDB from './AddMusicToDB'; // 사용자 db에 저장하는 역할
 import getImageUrl from './GetImg'; // 이미지 받아오는 역할
 import '../Common/common.css'
@@ -26,8 +26,8 @@ function Search() {
     const itemsPerPage = 10;
 
     const searchOptions = [ // 이건 검색 옵션
-        { label: "노래 제목", value: "track" },
-        { label: "가수 이름", value: "artist" }
+        { label: "Name", value: "track" },
+        { label: "Artist", value: "artist" }
     ];
     const api_key = "873cf422b0fab3416eb51f4c0f99e24b";
 
@@ -184,7 +184,7 @@ function Search() {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     onSearch={handleSearch}
-                    placeholder="Search by name, artist, or genre"
+                    placeholder="Search by music name, artist"
                     style={{ width: 300 }}
                 />
             </div>
@@ -194,6 +194,7 @@ function Search() {
                 loading={loading}
                 renderItem={(item) => (
                     <List.Item
+                        className="list-item"
                         actions={[
                             <Button
                                 shape="circle"
