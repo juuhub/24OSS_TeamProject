@@ -10,9 +10,17 @@ const AddMusic = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const formatReleaseDate = (date) => {
+    const options = { year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false };
+    return new Intl.DateTimeFormat('en-US', options).format(date).replace(',', ''); // ',' 제거
+  };
+
   // 폼 제출 처리 함수
   const onFinish = async (values) => {
     setLoading(true);
+
+
+    const formattedDate = formatReleaseDate(values.releaseDate.toDate());
 
     // 이미지 URL이 빈칸일 경우 기본 이미지 경로로 설정
     const imageUrl = values.imageUrl ? values.imageUrl : noImg;
@@ -23,7 +31,7 @@ const AddMusic = () => {
       artist: values.artist,
       genre: values.genre,
       duration: values.duration,
-      published: values.releaseDate.toISOString(), // 날짜 형식 변환
+      published: formattedDate, // 날짜 형식 변환
       memo: values.details, // memo 필드로 변경
       image: imageUrl, // 이미지 URL 확인 후 적용
     };

@@ -100,14 +100,17 @@ const Main = () => {
         loading={loading}
         renderItem={(item) => (
           <List.Item
-            className="list-item" 
+            className="list-item"
             actions={[
               <Button
                 key="edit"
                 type="link"
                 icon={<EditOutlined />}
                 className="action-button"
-                onClick={() => navigate(`Music/EditMusic/${item.id}`)} // 각 아이템의 ID에 맞게 경로 설정
+                onClick={(e) => {
+                  navigate(`Music/EditMusic/${item.id}`)
+                  e.stopPropagation();
+                }} // 각 아이템의 ID에 맞게 경로 설정
               />,
               <Button
                 key="delete"
@@ -115,16 +118,21 @@ const Main = () => {
                 icon={<DeleteOutlined />}
                 className="action-button"
                 style={{ marginLeft: '5px' }}
-                onClick={() => handleDelete(item.id)} // 삭제 처리 함수 호출
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDelete(item.id)
+                }} // 삭제 처리 함수 호출
               />,
             ]}
-            onClick={() => {
-              setSelectedAlbum(item); // 선택한 앨범 저장
-              setIsModalVisible(true); // 모달 표시
-            }}
           >
             <Skeleton avatar title={false} loading={item.loading} active>
-              <div className="list-item-content element-sytle">
+              <div className="list-item-content element-sytle"
+                onClick={() => {
+                  setSelectedAlbum(item); // 선택한 앨범 저장
+                  setIsModalVisible(true); // 모달 표시
+                }}
+                style={{ cursor: 'pointer' }}
+              >
                 <Avatar src={item.image} size={64} className="item-avatar" />
                 <div className="item-details">
                   <Text strong className="item-name">{item.name}</Text>

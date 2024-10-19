@@ -1,0 +1,18 @@
+.custom-modal .ant-modal-content {
+    background-color: #a0a0a0;
+}
+
+.custom-modal .ant-modal-header {
+    background-color: #a0a0a0;
+    text-align: center;
+    
+}
+
+.custom-modal .ant-modal-title {
+    font-size: 24px;
+    margin: 0;
+}
+
+.custom-modal .ant-modal-body {
+    color: #333;
+}
