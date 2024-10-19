@@ -3,17 +3,22 @@ import { Avatar, Button, List, Skeleton, Pagination, Input, Typography, Modal, m
 import { EditOutlined, DeleteOutlined, PlusCircleOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import './common.css';
+import AlbumDetails from '../Detail/UserMusicDetail';
 
 const { Text } = Typography;
 const { Search } = Input;
 const pageSize = 5;
 const fakeDataUrl = `https://66ff48002b9aac9c997ec8d3.mockapi.io/api/music`;
 
+
 const Main = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchText, setSearchText] = useState('');
+
+  const [selectedAlbum, setSelectedAlbum] = useState(null); // 선택한 앨범 정보를 저장
+  const [isModalVisible, setIsModalVisible] = useState(false); // 모달 표시 여부
 
   const navigate = useNavigate();
 
@@ -84,7 +89,7 @@ const Main = () => {
           style={{ width: 300 }}
         />
         <Button type="primary" onClick={() => navigate('/search')}>
-          API Page
+          Search and Add
         </Button>
       </div>
 
@@ -95,26 +100,31 @@ const Main = () => {
         loading={loading}
         renderItem={(item) => (
           <List.Item
+            className="list-item" 
             actions={[
-              <Button 
-                key="edit" 
-                type="link" 
-                icon={<EditOutlined />} 
+              <Button
+                key="edit"
+                type="link"
+                icon={<EditOutlined />}
                 className="action-button"
                 onClick={() => navigate(`Music/EditMusic/${item.id}`)} // 각 아이템의 ID에 맞게 경로 설정
               />,
-              <Button 
-                key="delete" 
-                type="link" 
-                icon={<DeleteOutlined />} 
+              <Button
+                key="delete"
+                type="link"
+                icon={<DeleteOutlined />}
                 className="action-button"
                 style={{ marginLeft: '5px' }}
                 onClick={() => handleDelete(item.id)} // 삭제 처리 함수 호출
               />,
             ]}
+            onClick={() => {
+              setSelectedAlbum(item); // 선택한 앨범 저장
+              setIsModalVisible(true); // 모달 표시
+            }}
           >
             <Skeleton avatar title={false} loading={item.loading} active>
-              <div className="list-item-content">
+              <div className="list-item-content element-sytle">
                 <Avatar src={item.image} size={64} className="item-avatar" />
                 <div className="item-details">
                   <Text strong className="item-name">{item.name}</Text>
@@ -141,15 +151,24 @@ const Main = () => {
 
       {/* 오른쪽 하단 추가 버튼 */}
       <div className="add-icon">
-        <Button 
-          type="primary" 
-          shape="circle" 
-          icon={<PlusCircleOutlined />} 
-          size="large" 
+        <Button
+          type="primary"
+          shape="circle"
+          icon={<PlusCircleOutlined />}
+          size="large"
           className="add-button"
           onClick={() => navigate('Music/AddMusic')}
         />
       </div>
+
+      <Modal
+        title="Album Details"
+        visible={isModalVisible}
+        onCancel={() => setIsModalVisible(false)} // 취소하면 모달 닫기
+        footer={null} // 하단 버튼 숨기기
+      >
+        <AlbumDetails album={selectedAlbum} />
+      </Modal>
     </div>
   );
 };
