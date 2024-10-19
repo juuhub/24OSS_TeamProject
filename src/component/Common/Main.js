@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Avatar, Button, List, Skeleton, Pagination, Input, Typography } from 'antd';
+import { Avatar, Button, List, Skeleton, Pagination, Input, Typography, Modal, message } from 'antd';
 import { EditOutlined, DeleteOutlined, PlusCircleOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import './common.css';
@@ -47,6 +47,33 @@ const Main = () => {
   // 페이지별로 데이터를 자르는 함수
   const paginatedData = filteredData.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
+  // 삭제 처리 함수
+  const handleDelete = (id) => {
+    Modal.confirm({
+      title: 'Are you sure you want to delete this music?',
+      content: 'This action cannot be undone.',
+      okText: 'Delete',
+      okType: 'danger',
+      cancelText: 'Cancel',
+      onOk: async () => {
+        try {
+          const response = await fetch(`${fakeDataUrl}/${id}`, {
+            method: 'DELETE',
+          });
+
+          if (response.ok) {
+            message.success('Music deleted successfully!');
+            setData(data.filter(item => item.id !== id)); // 리스트에서 삭제
+          } else {
+            message.error('Failed to delete music.');
+          }
+        } catch (error) {
+          message.error('An error occurred: ' + error.message);
+        }
+      },
+    });
+  };
+
   return (
     <div className="container">
       {/* 검색창과 페이지 이동 버튼 */}
@@ -74,6 +101,7 @@ const Main = () => {
                 type="link" 
                 icon={<EditOutlined />} 
                 className="action-button"
+                onClick={() => navigate(`Music/EditMusic/${item.id}`)} // 각 아이템의 ID에 맞게 경로 설정
               />,
               <Button 
                 key="delete" 
@@ -81,6 +109,7 @@ const Main = () => {
                 icon={<DeleteOutlined />} 
                 className="action-button"
                 style={{ marginLeft: '5px' }}
+                onClick={() => handleDelete(item.id)} // 삭제 처리 함수 호출
               />,
             ]}
           >
@@ -118,7 +147,7 @@ const Main = () => {
           icon={<PlusCircleOutlined />} 
           size="large" 
           className="add-button"
-          onClick={() => alert('Add new item')}
+          onClick={() => navigate('Music/AddMusic')}
         />
       </div>
     </div>
