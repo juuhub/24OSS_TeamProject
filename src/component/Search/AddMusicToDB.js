@@ -45,7 +45,7 @@ const addMusicToDB = async (album, api_key, noImg) => {
         image: getValue(data, "track.album.image.2.#text", noImg),
         published: getValue(data, "track.wiki.published"),
         duration: getValue(data, "track.duration") / 1000 || "", // 초단위로 맞춤
-        memo: "",
+        memo: getValue(data, "track.wiki.summary"),
         genre: getValue(data, "track.toptags.tag.0.name"),
         id: getValue(data, "mbid")
     };

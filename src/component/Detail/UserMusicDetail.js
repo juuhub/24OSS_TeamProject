@@ -10,8 +10,7 @@ const AlbumDetails = ({ album }) => {
     const formattedDuration = `${durationInMinutes}:${durationInSeconds < 10 ? '0' : ''}${durationInSeconds}`;
 
     const releaseDate = album.published || 'No release date available.';
-    const details = album.memo || 'No memo';
-
+    const details = album.memo || 'No details';
     return (
         <div>
             <Avatar src={album.image} size={128} className="album-image" />
