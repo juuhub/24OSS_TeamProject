@@ -1,66 +1,81 @@
 {
-  "track": {
-    "name": "Je t'aime",
-    "url": "https://www.last.fm/music/Joy/_/Je+t%27aime",
-    "duration": "261000",
-    "streamable": {
-      "#text": "0",
-      "fulltrack": "0"
-    },
-    "listeners": "69518",
-    "playcount": "642188",
-    "artist": {
-      "name": "Joy",
-      "mbid": "ea6a260d-3fca-4a4d-9608-125fc4f03b81",
-      "url": "https://www.last.fm/music/Joy"
-    },
-    "album": {
-      "artist": "Joy",
-      "title": "Je T'aime - Single",
-      "url": "https://www.last.fm/music/Joy/Je+T%27aime+-+Single",
-      "image": [
-        {
-          "#text": "https://lastfm.freetls.fastly.net/i/u/34s/f05ee5ad05da360dc8159bfafabd1d2f.png",
-          "size": "small"
+  "toptracks": {
+    "track": [
+      {
+        "name": "강남스타일",
+        "playcount": "3765747",
+        "listeners": "483251",
+        "mbid": "882ce25d-51b9-4fe5-bbdf-16e661df0822",
+        "url": "https://www.last.fm/music/Psy/_/%EA%B0%95%EB%82%A8%EC%8A%A4%ED%83%80%EC%9D%BC",
+        "streamable": "0",
+        "artist": {
+          "name": "Psy",
+          "mbid": "f99b7d67-4e63-4678-aa66-4c6ac0f7d24a",
+          "url": "https://www.last.fm/music/Psy"
         },
-        {
-          "#text": "https://lastfm.freetls.fastly.net/i/u/64s/f05ee5ad05da360dc8159bfafabd1d2f.png",
-          "size": "medium"
-        },
-        {
-          "#text": "https://lastfm.freetls.fastly.net/i/u/174s/f05ee5ad05da360dc8159bfafabd1d2f.png",
-          "size": "large"
-        },
-        {
-          "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/f05ee5ad05da360dc8159bfafabd1d2f.png",
-          "size": "extralarge"
+        "image": [
+          {
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+            "size": "small"
+          },
+          {
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+            "size": "medium"
+          },
+          {
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+            "size": "large"
+          },
+          {
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+            "size": "extralarge"
+          }
+        ],
+        "@attr": {
+          "rank": "1"
         }
-      ]
-    },
-    "toptags": {
-      "tag": [
-        {
-          "name": "jazz",
-          "url": "https://www.last.fm/tag/jazz"
+      },
+      {
+        "name": "Gangnam Style (강남스타일)",
+        "playcount": "2235731",
+        "listeners": "382354",
+        "mbid": "882ce25d-51b9-4fe5-bbdf-16e661df0822",
+        "url": "https://www.last.fm/music/Psy/_/Gangnam+Style+(%EA%B0%95%EB%82%A8%EC%8A%A4%ED%83%80%EC%9D%BC)",
+        "streamable": "0",
+        "artist": {
+          "name": "Psy",
+          "mbid": "f99b7d67-4e63-4678-aa66-4c6ac0f7d24a",
+          "url": "https://www.last.fm/music/Psy"
         },
-        {
-          "name": "swing",
-          "url": "https://www.last.fm/tag/swing"
-        },
-        {
-          "name": "rnb",
-          "url": "https://www.last.fm/tag/rnb"
-        },
-        {
-          "name": "orchestral pop",
-          "url": "https://www.last.fm/tag/orchestral+pop"
+        "image": [
+          {
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+            "size": "small"
+          },
+          {
+            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+            "size": "medium"
+          },
+          {
+            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+            "size": "large"
+          },
+          {
+            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+            "size": "extralarge"
+          }
+        ],
+        "@attr": {
+          "rank": "2"
         }
-      ]
-    },
-    "wiki": {
-      "published": "26 May 2021, 09:20",
-      "summary": "The pre-release track 'Je T'Aime' is a part of JOY's first solo album \u003C안녕 (Hello)\u003E containing a total of 6 tracks to be released on May 31st, 2021. \u003Ca href=\"http://www.last.fm/music/Joy/_/Je+t%27aime\"\u003ERead more on Last.fm\u003C/a\u003E.",
-      "content": "The pre-release track 'Je T'Aime' is a part of JOY's first solo album \u003C안녕 (Hello)\u003E containing a total of 6 tracks to be released on May 31st, 2021. \u003Ca href=\"http://www.last.fm/music/Joy/_/Je+t%27aime\"\u003ERead more on Last.fm\u003C/a\u003E. User-contributed text is available under the Creative Commons By-SA License; additional terms may apply."
+      }
+    ],
+    "@attr": {
+      "artist": "Psy",
+      "page": "1",
+      "perPage": "50",
+      "totalPages": "354",
+      "total": "17674"
     }
   }
 }
