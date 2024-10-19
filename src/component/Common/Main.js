@@ -3,6 +3,7 @@ import { Avatar, Button, List, Skeleton, Pagination, Input, Typography, Modal, m
 import { EditOutlined, DeleteOutlined, PlusCircleOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import './common.css';
+import '../Detail/Modal.css'
 import AlbumDetails from '../Detail/UserMusicDetail';
 
 const { Text } = Typography;
@@ -170,6 +171,7 @@ const Main = () => {
       </div>
 
       <Modal
+        className="custom-modal"
         title="Album Details"
         visible={isModalVisible}
         onCancel={() => setIsModalVisible(false)} // 취소하면 모달 닫기

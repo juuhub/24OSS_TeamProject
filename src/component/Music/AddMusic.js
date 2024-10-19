@@ -3,6 +3,7 @@ import { Form, Input, Button, DatePicker, InputNumber, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import './music.css';
 import noImg from "../../img/noImg.png";
+import moment from 'moment';
 
 const { TextArea } = Input;
 
@@ -11,16 +12,14 @@ const AddMusic = () => {
   const navigate = useNavigate();
 
   const formatReleaseDate = (date) => {
-    const options = { year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false };
-    return new Intl.DateTimeFormat('en-US', options).format(date).replace(',', ''); // ',' 제거
+    return moment(date).format('DD MMM YYYY, HH:mm'); // moment.js를 사용하여 형식 지정
   };
 
   // 폼 제출 처리 함수
   const onFinish = async (values) => {
     setLoading(true);
 
-
-    const formattedDate = formatReleaseDate(values.releaseDate.toDate());
+    const formattedDate = formatReleaseDate(values.releaseDate); 
 
     // 이미지 URL이 빈칸일 경우 기본 이미지 경로로 설정
     const imageUrl = values.imageUrl ? values.imageUrl : noImg;
@@ -104,7 +103,11 @@ const AddMusic = () => {
           name="releaseDate"
           rules={[{ required: true, message: 'Please select the release date' }]}
         >
-          <DatePicker className="full-width" />
+          <DatePicker
+            className="full-width"
+            showTime={{ format: 'HH:mm' }} // 초를 제외한 시:분 포맷
+            format="DD MMM YYYY, HH:mm" // 입력 포맷
+          />
         </Form.Item>
 
         {/* 세부정보 입력 */}

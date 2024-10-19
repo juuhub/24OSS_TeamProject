@@ -9,6 +9,7 @@ const { TextArea } = Input;
 const EditMusic = () => {
   const [loading, setLoading] = useState(false);
   const [initialData, setInitialData] = useState(null);
+  const [releaseDate, setReleaseDate] = useState(null); // 선택된 날짜 상태 추가
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -18,10 +19,10 @@ const EditMusic = () => {
       try {
         const response = await fetch(`https://66ff48002b9aac9c997ec8d3.mockapi.io/api/music/${id}`);
         const data = await response.json();
-        
+
         // 날짜를 moment 객체로 변환
         if (data.published) {
-          data.published = moment(data.published); // moment로 변환
+          data.published = moment(data.published, "DD MMM YYYY, HH:mm"); // 형식 지정하여 moment로 변환
         }
         setInitialData(data);
       } catch (error) {
@@ -43,7 +44,7 @@ const EditMusic = () => {
       artist: values.artist,
       genre: values.genre,
       duration: values.duration,
-      published: values.releaseDate.toISOString(), // published로 날짜 형식 맞춤
+      published: values.releaseDate ? values.releaseDate.format("DD MMM YYYY, HH:mm") : null, // DatePicker에서 Moment 형식으로 변환
       memo: values.details, // memo 필드 사용
       image: values.imageUrl, // image 필드 사용
     };
@@ -88,7 +89,7 @@ const EditMusic = () => {
           artist: initialData.artist,
           genre: initialData.genre,
           duration: initialData.duration,
-          releaseDate: initialData.published ? moment(initialData.published) : null, // moment로 변환
+          releaseDate: releaseDate ? moment(releaseDate) : null,
           details: initialData.memo,
           imageUrl: initialData.image,
         }}
@@ -135,7 +136,13 @@ const EditMusic = () => {
           name="releaseDate"
           rules={[{ required: true, message: 'Please select the release date' }]}
         >
-          <DatePicker className="full-width" />
+          <DatePicker
+            className="full-width"
+            showTime={{ format: 'HH:mm' }} // 초를 제외한 시:분 포맷
+            format="DD MMM YYYY, HH:mm" // 입력 포맷
+            value={releaseDate} // 상태 값 사용
+            onChange={(date) => setReleaseDate(date)} // 날짜 변경 시 상태 업데이트
+          />
         </Form.Item>
 
         {/* 세부정보 입력 */}
