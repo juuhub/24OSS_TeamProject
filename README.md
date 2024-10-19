@@ -2,4 +2,4 @@
 
 22100183 김주한, 22100304 박준현
 
-netlify 배포 주소 : https://oss-teamproject.netlify.app/
+Netlify : https://oss-teamproject.netlify.app/
