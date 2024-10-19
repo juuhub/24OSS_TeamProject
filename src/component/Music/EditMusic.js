@@ -142,7 +142,7 @@ const EditMusic = () => {
         <Form.Item
           label="Details"
           name="details"
-          rules={[{ required: true, message: 'Please enter details' }]}
+          rules={[{ required: false, message: 'Please enter details' }]}
         >
           <TextArea rows={4} placeholder="Enter details" />
         </Form.Item>

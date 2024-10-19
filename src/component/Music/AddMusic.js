@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Input, Button, DatePicker, InputNumber, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import './music.css';
+import noImg from "../../img/noImg.png";
 
 const { TextArea } = Input;
 
@@ -18,7 +19,11 @@ const AddMusic = () => {
   const onFinish = async (values) => {
     setLoading(true);
 
+
     const formattedDate = formatReleaseDate(values.releaseDate.toDate());
+
+    // 이미지 URL이 빈칸일 경우 기본 이미지 경로로 설정
+    const imageUrl = values.imageUrl ? values.imageUrl : noImg;
 
     // 데이터 폼 변환
     const formData = {
@@ -28,7 +33,7 @@ const AddMusic = () => {
       duration: values.duration,
       published: formattedDate, // 날짜 형식 변환
       memo: values.details, // memo 필드로 변경
-      image: values.imageUrl, // image 필드로 변경
+      image: imageUrl, // 이미지 URL 확인 후 적용
     };
 
     try {
@@ -106,7 +111,7 @@ const AddMusic = () => {
         <Form.Item
           label="Details"
           name="details"
-          rules={[{ required: true, message: 'Please enter details' }]}
+          rules={[{ required: false, message: 'Please enter details' }]}
         >
           <TextArea rows={4} placeholder="Enter details" />
         </Form.Item>
@@ -116,7 +121,7 @@ const AddMusic = () => {
           label="Image URL"
           name="imageUrl"
           rules={[
-            { required: true, message: 'Please enter the image URL' },
+            { required: false, message: 'Please enter the image URL' }, // 필수 입력 제거
             { type: 'url', message: 'Please enter a valid URL' },
           ]}
         >
