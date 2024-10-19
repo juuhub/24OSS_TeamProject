@@ -13,7 +13,7 @@
 }
 
 .ant-form-item-label > label {
-  color: white;
+   color: white !important; /* 우선순위 높임 */
 }
 
 .full-width {
