@@ -3,7 +3,7 @@ import Main from './component/Common/Main';
 import Footer from './component/Common/Footer';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Search from './component/Search';
+import Search from './component/Search/Search';
 
 function App() {
   return (
